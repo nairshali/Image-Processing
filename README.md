@@ -5,6 +5,16 @@ Image Processing
 # ABSTRACT
 Noise is unwanted information present in an image. Such unwanted information in an image can be removed with filters. In digital image processing, filters can be applied on an image in two ways, which include spatial and frequency domain. This report mainly deals with the application of predefined and user defined filters in both spatial and frequency domain on noisy images. This is done so to identify the efficiency of the filters in terms of enhancing the quality of the image thereby removing the noise present in it. The purpose of this paper is to compare between mean, Gaussian and median filters in spatial domain and Butterworth low Pass Filter (BLPF) and Ideal low Pass Filter (ILPF) within the frequency domain to enhance noisy image and obtain sharper image. The proposed enhanced models were applied on standard noisy pictures and simulated using MATLAB. Experimental results comparing the old and new filters design showed that BLPF outperformed ILPF. Moreover, the new designed filters outperformed the original ones.
 
+# INTRODUCTION
+Noise present in an image affects the originality of the image and makes the process of interpretation of the image more difficult. Generally, an image gets affected by noise during its acquisition, transmission and storage.  There are several ways that noise can be introduced into an image, depending on how the image is created. For example:-
+•	If the image is scanned from a photograph made on film, the film grain is a source of noise. Noise can also be the result of damage to the film, or be introduced by the scanner itself. 
+•	If the image is acquired directly in a digital format, the mechanism for gathering the data (such as a CCD detector) can introduce noise. 
+•	 Electronic transmission of image data can introduce noise.  
+ Based on its nature, noise can be modelled as either an additive or a multiplicative process. 
+                         𝑔 𝑥, = 𝑓 𝑥,𝑦 + 𝑛(𝑥,𝑦)                                   𝑔 𝑥,𝑦 = 𝑓 𝑥,𝑦 ∗ 𝑛(𝑥,𝑦)           (1)
+Where f x,y  - Original image, n(x,y) - Noise, g x,y  -Noisy image. 
+The above notations (1) represent both the additive and multiplicative noise models. All such types of noise present in an image can be removed with filters. 
+A filter is a technique with which certain frequency components can be chosen or rejected.  The spatial domain filter and frequency domain filters are the most important tools in an image processing. These filters refer to the image plane itself and operate directly on the image pixels and Fourier transformed image respectively. They can be characterized as linear (Average and Gaussian) and non-linear filters (Median) in spatial domain and Low pass and high pass filters in frequency domain.This study mainly deals with the application of filters which include Mean, Median, Gaussian, Low pass and high pass filters on noisy images, and the calculation of MSE (Mean square error) and PSNR(Point to signal Ratio) on the filtered images with a view to identifying the efficiency of these filters in terms of minimizing noises present in the image.
 
 
 # FREQUENCY DOMAIN
