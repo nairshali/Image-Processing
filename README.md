@@ -21,7 +21,7 @@ Application of Filters in Spatial domain
 
 A filter is something that attenuates or enhances particular frequencies easiest to visualize in the domain. Image filters have a wide variety of uses such as noise removal and edge enhancement; It creates an embossed appearance making the image appear crisper and sharper.
 The term Filter in “Digital image processing” is referred to the sub image. There are others term to call sub image such as mask, kernel, template or window .The value in a filter sub image is referred as coefficients rather than pixels. 
-Mean Filter
+# Mean Filter
 Spatial domain represents an important enhancement technique that can effectively be used to remove various types of noise in digital images. These spatial filters typically operate on small neighbourhood 3 x 3 to 11 x 11 . Mean filters are the most common spatial filters used as a simple method for reducing noise in an image, particularly Gaussian noise.  The idea of mean filtering is simply to replace each pixel value in an image with the mean ‘average’ value of its neighbours, including itself. The extracted average values are the result of the convolution process, which is commonly based on specified fixed convolution mask (kernel). Differently sized kernels containing different patterns of number achieve different results under convolution. By increasing the size of the mean filter to 5 x 5, the obtained image will be characterized with less noise.
  In general, linear ﬁltering of an image f of size M x N with a ﬁlter mask of size m x n is given by the expression
 		                  a   b
@@ -30,7 +30,7 @@ Spatial domain represents an important enhancement technique that can effectivel
 where a=(m-1)/2 and b=(n-1)/2; m x n (odd numbers) for x=0,1,…,M-1 and y=0,1,…,N-1 . The process is also called convolution (used primarily in the frequency domain) 
 Figure (1) depicts the Noisy image and output image after applying Mean filter
 
-Gaussian Filter
+# Gaussian Filter
 Gaussian filtering is used to blur images and remove noise and detail. The Gaussian function is used in numerous research areas: – It defines a probability distribution for noise or data. 
 •	It is a smoothing operator. 
 •	It is used in mathematics.
@@ -42,7 +42,7 @@ In two dimensions, it is the product of two such Gaussians, one per direction:
 Where x is the distance from the origin in the horizontal axis, y is the distance from the origin in the vertical axis, and σ is the standard deviation of the Gaussian distribution.
 Figure (1)depicts the Noisy image and output image after applying Gaussian filter
 
-Median Filter
+# Median Filter
 In average filters, according to a defined average criterion, the average value of the neighbouring pixels is calculated and this value is put to the center pixel location. Ordered filters are usually used to filter salt and pepper noises, negative exponential noises and Raleigh distributed noises.  Average filters are used to remove Gauss distributed noises or uniform distributed noises, the most effective ordered filter is median filter. With this filter, gray-level values in a chosen neighbourhood are sorted in the ascending manner. Center pixel of the mask is replaced with the median value of the ordered gray-levels. With sorting operation, noise valued pixels will be either on the head of the array or in the end of the array with a greater probability and the median value will not be a noise point with high probability. If there is a noise point in the center of the mask and if it’s replaced with median value, then the noise could be filtered out.
 Unlike the mean filter, the median filter is non-linear. This means that for two images A(x) and B(x): 
 
