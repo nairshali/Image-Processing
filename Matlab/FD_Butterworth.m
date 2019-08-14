@@ -30,3 +30,18 @@ aflp = af.*lp;
 disftim = fftshow(aflp);
 % plot image
 subplot(2,3,3);imshow(disftim);title('Butterworth image post applying filter');
+
+% Inverse Fourier Transform
+aflpi = ifft2(aflp);
+% display inverse of fourier transformed image.
+disftim = ifftshow(aflpi);
+% plot image 
+subplot(2,3,4);imshow(disftim);title('Butterworth Inv Ft');
+
+% Calculate MSE / PNSR / SNR 
+Bwlp = immse(disftim,Im);
+fprintf('\n The mean-square error with lp filter %0.4f\n',Bwlp); 
+[peaksnr, snr] = psnr(disftim, Im);
+fprintf('\n The Peak-SNR value is %0.4f', peaksnr); 
+fprintf('\n The SNR value is %0.4f \n', snr);
+
