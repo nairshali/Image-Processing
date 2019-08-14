@@ -81,3 +81,7 @@ A high-pass filter can be used to make an image appear sharper. These filters em
 Unfortunately, while low-pass filtering smoothes out noise, high-pass filtering does just the opposite: it amplifies noise. You can get away with this if the original image is not too noisy; otherwise the noise will overwhelm the image. High-pass filtering can also cause small, faint details to be greatly exaggerated. An over-processed image will look grainy and unnatural, and point sources will have dark donuts around them. So while high-pass filtering can often improve an image by sharpening detail, overdoing it can actually degrade the image quality significantly.
 
 Common high pass filters are:-Ideal high pass filter, Butterworth high pass filter, Gaussian high pass filter
+
+
+# 3) Band pass filter
+A band pass attenuates very low and very high frequencies, but retains a middle range band of frequencies. Band pass filtering can be used to enhance edges (suppressing low frequencies) while reducing the noise at the same time (attenuating high frequencies).   
