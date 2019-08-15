@@ -20,5 +20,19 @@ classdef FileCompressionProject < matlab.apps.AppBase
         end
         
     end
+    
+    % App initialization and construction
+    methods (Access = private)
+
+        % Create UIFigure and components
+        function createComponents(app)
+
+            % Create ImageCompressionDecompressionUIFigure
+            app.ImageCompressionDecompressionUIFigure = uifigure;
+            app.ImageCompressionDecompressionUIFigure.Position = [100 100 801 540];
+            app.ImageCompressionDecompressionUIFigure.Name = 'Image Compression/Decompression';
+        end
+        
+    end
 
 end
