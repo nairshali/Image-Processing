@@ -49,6 +49,11 @@ classdef FileCompressionProject < matlab.apps.AppBase
             app.DecompressionMenu.ForegroundColor = [0.6392 0.0784 0.1804];
             app.DecompressionMenu.Text = 'Decompression';
             
+             % Create ExitMenu
+            app.ExitMenu = uimenu(app.FileMenu);
+            app.ExitMenu.ForegroundColor = [0.6392 0.0784 0.1804];
+            app.ExitMenu.Text = 'Exit';
+            
         end
         
     end
