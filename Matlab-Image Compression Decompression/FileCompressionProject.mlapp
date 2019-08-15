@@ -1,1 +1,12 @@
+classdef FileCompressionProject < matlab.apps.AppBase
 
+    % Properties that correspond to app components
+    properties (Access = public)
+        ImageCompressionDecompressionUIFigure  matlab.ui.Figure
+        FileMenu                        matlab.ui.container.Menu
+        CompressionMenu                 matlab.ui.container.Menu
+        DecompressionMenu               matlab.ui.container.Menu
+        ExitMenu                        matlab.ui.container.Menu     
+    end
+
+end
