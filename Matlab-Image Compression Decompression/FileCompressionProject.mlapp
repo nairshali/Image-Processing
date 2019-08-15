@@ -8,5 +8,17 @@ classdef FileCompressionProject < matlab.apps.AppBase
         DecompressionMenu               matlab.ui.container.Menu
         ExitMenu                        matlab.ui.container.Menu     
     end
+    
+    methods (Access = private)
+    
+        % Menu selected function: CompressionMenu
+        function CompressionMenuSelected(app, event)
+            app.LblSelectFile.Visible=true;
+            app.LblSelectFile.Enable=true;
+            app.SelectFileButton.Enable=true;
+            %print('Enter file for compression');
+        end
+        
+    end
 
 end
