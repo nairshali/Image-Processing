@@ -37,6 +37,17 @@ classdef FileCompressionProject < matlab.apps.AppBase
             app.FileMenu.ForegroundColor = [1 0.4118 0.1608];
             app.FileMenu.Text = 'File';
             
+            % Create CompressionMenu
+            app.CompressionMenu = uimenu(app.FileMenu);
+            app.CompressionMenu.MenuSelectedFcn = createCallbackFcn(app, @CompressionMenuSelected, true);
+            app.CompressionMenu.Tooltip = {'Open file for compression'};
+            app.CompressionMenu.ForegroundColor = [0.6392 0.0784 0.1804];
+            app.CompressionMenu.Text = 'Compression';
+
+            % Create DecompressionMenu
+            app.DecompressionMenu = uimenu(app.FileMenu);
+            app.DecompressionMenu.ForegroundColor = [0.6392 0.0784 0.1804];
+            app.DecompressionMenu.Text = 'Decompression';
             
         end
         
