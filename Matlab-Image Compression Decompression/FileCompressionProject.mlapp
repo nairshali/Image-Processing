@@ -59,6 +59,11 @@ classdef FileCompressionProject < matlab.apps.AppBase
             app.VideoMenu.ForegroundColor = [1 0.4118 0.1608];
             app.VideoMenu.Text = 'Video';
             
+             % Create CompressionMenu_2
+            app.CompressionMenu_2 = uimenu(app.VideoMenu);
+            app.CompressionMenu_2.ForegroundColor = [0.6392 0.0784 0.1804];
+            app.CompressionMenu_2.Text = 'Compression';
+            
         end
         
     end
