@@ -124,6 +124,14 @@ classdef FileCompressionProject < matlab.apps.AppBase
             app.DecompressFileButton.Tooltip = {'Click to decompress file'};
             app.DecompressFileButton.Position = [336 177 106 22];
             app.DecompressFileButton.Text = 'Decompress File';
+            
+             % Create UIAxes2
+            app.UIAxes2 = uiaxes(app.ImageCompressionDecompressionUIFigure);
+            title(app.UIAxes2, 'Output  Image')
+            xlabel(app.UIAxes2, 'X')
+            ylabel(app.UIAxes2, 'Y')
+            app.UIAxes2.PlotBoxAspectRatio = [1 0.691292875989446 0.691292875989446];
+            app.UIAxes2.Position = [405 219 351 265];
         end
         
     end
