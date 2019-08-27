@@ -95,6 +95,10 @@ classdef FileCompressionProject < matlab.apps.AppBase
             app.CompressionRatioEditFieldLabel.HorizontalAlignment = 'right';
             app.CompressionRatioEditFieldLabel.Position = [485 108 107 22];
             app.CompressionRatioEditFieldLabel.Text = 'Compression Ratio';
+            
+            % Create CompressionRatioEditField
+            app.CompressionRatioEditField = uieditfield(app.ImageCompressionDecompressionUIFigure, 'text');
+            app.CompressionRatioEditField.Position = [607 108 105 22];
         end
         
     end
