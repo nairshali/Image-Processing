@@ -99,6 +99,14 @@ classdef FileCompressionProject < matlab.apps.AppBase
             % Create CompressionRatioEditField
             app.CompressionRatioEditField = uieditfield(app.ImageCompressionDecompressionUIFigure, 'text');
             app.CompressionRatioEditField.Position = [607 108 105 22];
+            
+             % Create LblSelectFile
+            app.LblSelectFile = uilabel(app.ImageCompressionDecompressionUIFigure);
+            app.LblSelectFile.FontWeight = 'bold';
+            app.LblSelectFile.Enable = 'off';
+            app.LblSelectFile.Visible = 'off';
+            app.LblSelectFile.Position = [174 519 135 22];
+            app.LblSelectFile.Text = 'Select file';
         end
         
     end
