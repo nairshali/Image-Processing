@@ -82,6 +82,13 @@ classdef FileCompressionProject < matlab.apps.AppBase
             app.SelectFileButton.Position = [85 177 100 22];
             app.SelectFileButton.Text = 'Select File';
             
+             % Create UIAxes
+            app.UIAxes = uiaxes(app.ImageCompressionDecompressionUIFigure);
+            title(app.UIAxes, 'Input Image')
+            xlabel(app.UIAxes, 'X')
+            ylabel(app.UIAxes, 'Y')
+            app.UIAxes.PlotBoxAspectRatio = [1 0.677083333333333 0.677083333333333];
+            app.UIAxes.Position = [49 207 357 284];
         end
         
     end
