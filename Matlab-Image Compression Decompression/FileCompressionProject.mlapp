@@ -74,6 +74,14 @@ classdef FileCompressionProject < matlab.apps.AppBase
             app.ExitMenu_2.ForegroundColor = [0.6392 0.0784 0.1804];
             app.ExitMenu_2.Text = 'Exit';
             
+             % Create SelectFileButton
+            app.SelectFileButton = uibutton(app.ImageCompressionDecompressionUIFigure, 'push');
+            app.SelectFileButton.ButtonPushedFcn = createCallbackFcn(app, @SelectFileButtonPushed, true);
+            app.SelectFileButton.FontColor = [0.6392 0.0784 0.1804];
+            app.SelectFileButton.Enable = 'off';
+            app.SelectFileButton.Position = [85 177 100 22];
+            app.SelectFileButton.Text = 'Select File';
+            
         end
         
     end
