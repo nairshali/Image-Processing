@@ -107,6 +107,15 @@ classdef FileCompressionProject < matlab.apps.AppBase
             app.LblSelectFile.Visible = 'off';
             app.LblSelectFile.Position = [174 519 135 22];
             app.LblSelectFile.Text = 'Select file';
+            
+            % Create CompressFileButton
+            app.CompressFileButton = uibutton(app.ImageCompressionDecompressionUIFigure, 'push');
+            app.CompressFileButton.ButtonPushedFcn = createCallbackFcn(app, @CompressFileButtonPushed, true);
+            app.CompressFileButton.FontColor = [0.6392 0.0784 0.1804];
+            app.CompressFileButton.Enable = 'off';
+            app.CompressFileButton.Tooltip = {'Click to compress file'};
+            app.CompressFileButton.Position = [211 177 100 22];
+            app.CompressFileButton.Text = 'Compress File';
         end
         
     end
