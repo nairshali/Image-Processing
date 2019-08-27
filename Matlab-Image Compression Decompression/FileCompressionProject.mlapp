@@ -116,6 +116,14 @@ classdef FileCompressionProject < matlab.apps.AppBase
             app.CompressFileButton.Tooltip = {'Click to compress file'};
             app.CompressFileButton.Position = [211 177 100 22];
             app.CompressFileButton.Text = 'Compress File';
+            
+            % Create DecompressFileButton
+            app.DecompressFileButton = uibutton(app.ImageCompressionDecompressionUIFigure, 'push');
+            app.DecompressFileButton.FontColor = [0.6392 0.0784 0.1804];
+            app.DecompressFileButton.Enable = 'off';
+            app.DecompressFileButton.Tooltip = {'Click to decompress file'};
+            app.DecompressFileButton.Position = [336 177 106 22];
+            app.DecompressFileButton.Text = 'Decompress File';
         end
         
     end
