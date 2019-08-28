@@ -6,7 +6,24 @@ classdef FileCompressionProject < matlab.apps.AppBase
         FileMenu                        matlab.ui.container.Menu
         CompressionMenu                 matlab.ui.container.Menu
         DecompressionMenu               matlab.ui.container.Menu
-        ExitMenu                        matlab.ui.container.Menu     
+        ExitMenu                        matlab.ui.container.Menu
+        VideoMenu                       matlab.ui.container.Menu
+        CompressionMenu_2               matlab.ui.container.Menu
+        DecompressionMenu_2             matlab.ui.container.Menu
+        ExitMenu_2                      matlab.ui.container.Menu
+        SelectFileButton                matlab.ui.control.Button
+        UIAxes                          matlab.ui.control.UIAxes
+        CompressionRatioEditFieldLabel  matlab.ui.control.Label
+        CompressionRatioEditField       matlab.ui.control.EditField
+        LblSelectFile                   matlab.ui.control.Label
+        CompressFileButton              matlab.ui.control.Button
+        DecompressFileButton            matlab.ui.control.Button
+        UIAxes2                         matlab.ui.control.UIAxes
+        CompressionSizeEditFieldLabel   matlab.ui.control.Label
+        CompressionSizeEditField        matlab.ui.control.EditField
+        ClearAllButton                  matlab.ui.control.StateButton
+        OriginalSizeEditFieldLabel      matlab.ui.control.Label
+        OriginalSizeEditField           matlab.ui.control.EditField
     end
     
     methods (Access = private)
