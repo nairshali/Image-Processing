@@ -249,4 +249,27 @@ classdef FileCompressionProject < matlab.apps.AppBase
         
     end
 
+methods (Access = public)
+
+        % Construct app
+        function app = FileCompressionProject
+
+            % Create and configure components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.ImageCompressionDecompressionUIFigure)
+
+            if nargout == 0
+                clear app
+            end
+        end
+
+        % Code that executes before app deletion
+        function delete(app)
+
+            % Delete UIFigure when app is deleted
+            delete(app.ImageCompressionDecompressionUIFigure)
+        end
+    end
 end
