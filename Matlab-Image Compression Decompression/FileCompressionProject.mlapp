@@ -46,6 +46,12 @@ classdef FileCompressionProject < matlab.apps.AppBase
             app.LblSelectFile.Text=fname;
         end
         
+         % Button pushed function: CompressFileButton
+        function CompressFileButtonPushed(app, event)
+            app.LblSelectFile.Visible=false;
+            fname=app.LblSelectFile.Text;
+            msgbox('done');
+        
     end
     
     % App initialization and construction
