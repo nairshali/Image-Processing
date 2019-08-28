@@ -138,6 +138,16 @@ classdef FileCompressionProject < matlab.apps.AppBase
             app.CompressionSizeEditFieldLabel.HorizontalAlignment = 'right';
             app.CompressionSizeEditFieldLabel.Position = [479 142 103 22];
             app.CompressionSizeEditFieldLabel.Text = 'Compression Size';
+            
+             % Create CompressionSizeEditField
+            app.CompressionSizeEditField = uieditfield(app.ImageCompressionDecompressionUIFigure, 'text');
+            app.CompressionSizeEditField.Position = [597 142 115 22];
+
+            % Create ClearAllButton
+            app.ClearAllButton = uibutton(app.ImageCompressionDecompressionUIFigure, 'state');
+            app.ClearAllButton.Text = {'Clear All'; ''};
+            app.ClearAllButton.FontColor = [0.6392 0.0784 0.1804];
+            app.ClearAllButton.Position = [85 142 100 22];
         end
         
     end
