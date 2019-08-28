@@ -36,6 +36,16 @@ classdef FileCompressionProject < matlab.apps.AppBase
             %print('Enter file for compression');
         end
         
+        % Button pushed function: SelectFileButton
+        function SelectFileButtonPushed(app, event)
+            global fname;
+            [filename pathname]=uigetfile({'*.bmp'},'File Selector');
+            fname=fullfile(pathname,filename);
+            imshow(fname,'Parent',app.UIAxes);
+            app.CompressFileButton.Enable=true;
+            app.LblSelectFile.Text=fname;
+        end
+        
     end
     
     % App initialization and construction
