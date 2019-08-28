@@ -132,6 +132,12 @@ classdef FileCompressionProject < matlab.apps.AppBase
             ylabel(app.UIAxes2, 'Y')
             app.UIAxes2.PlotBoxAspectRatio = [1 0.691292875989446 0.691292875989446];
             app.UIAxes2.Position = [405 219 351 265];
+            
+             % Create CompressionSizeEditFieldLabel
+            app.CompressionSizeEditFieldLabel = uilabel(app.ImageCompressionDecompressionUIFigure);
+            app.CompressionSizeEditFieldLabel.HorizontalAlignment = 'right';
+            app.CompressionSizeEditFieldLabel.Position = [479 142 103 22];
+            app.CompressionSizeEditFieldLabel.Text = 'Compression Size';
         end
         
     end
