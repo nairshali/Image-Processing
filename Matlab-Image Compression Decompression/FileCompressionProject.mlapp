@@ -236,6 +236,12 @@ classdef FileCompressionProject < matlab.apps.AppBase
                 % divide image in 4x4 block and applying DCT
                 comp_image = blockproc(R_mask,[i_blocksize i_blocksize],funinvdct);
             end
+            
+            % write file
+            app.LblSelectFile.Text = outpath;
+            imwrite(comp_image,outpath);
+            imshow(comp_image,'Parent',app.UIAxes2);
+
         end
     
     % App initialization and construction
