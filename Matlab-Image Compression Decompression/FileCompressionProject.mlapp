@@ -220,9 +220,22 @@ classdef FileCompressionProject < matlab.apps.AppBase
                 
                 % cat
                 comp_image(:,:,:)=cat(3,R_image, B_image, G_image);
-
-           end
+           else
+                % get individual planes
+                R_im = im2double(im);
+                
+                % DCT
+                dct = @(block_struct) T * block_struct.data * T';
         
+                % divide image in 8x* block and applying DCT
+                R = blockproc(R_im,[i_blocksize i_blocksize],dct);
+                
+                R_mask = blockproc(R,[i_blocksize i_blocksize],@(block_struct) mask .* block_struct.data );
+                % inverse
+                funinvdct = @(block_struct) T' * block_struct.data * T;
+                % divide image in 4x4 block and applying DCT
+                comp_image = blockproc(R_mask,[i_blocksize i_blocksize],funinvdct);
+            end
         end
     
     % App initialization and construction
