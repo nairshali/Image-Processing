@@ -78,6 +78,120 @@ classdef FileCompressionProject < matlab.apps.AppBase
             im = imread(fname);
             outpath = strcat('C:\Users\nirup\Desktop\Shalini Study Reading University\Image processing\2018_ImageCompression\Demo\Compressed_',string(i_coeff),'_',filename);
             T = dctmtx(i_blocksize);
+            
+            % defining co-efficients for block size 8[5]
+            if i_blocksize == 8
+                if i_coeff == 1
+                    mask = [1   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0];
+                elseif i_coeff == 4 % defining co-efficients for block size 4
+                    mask = [1   1   0   0   0   0   0   0
+                            1   0   0   0   0   0   0   0
+                            1   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0];
+                elseif  i_coeff == 8
+                    mask = [1   1   1   1   0   0   0   0
+                            1   1   0   0   0   0   0   0
+                            1   0   0   0   0   0   0   0
+                            1   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0];
+                elseif  i_coeff == 10
+                    mask = [1   1   1   1   0   0   0   0
+                            1   1   1   0   0   0   0   0
+                            1   1   0   0   0   0   0   0
+                            1   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0];
+                elseif  i_coeff == 12
+                    mask = [1   1   1   1   0   0   0   0
+                            1   1   1   0   0   0   0   0
+                            1   1   0   0   0   0   0   0
+                            1   1   0   0   0   0   0   0
+                            1   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0];
+                elseif  i_coeff == 16
+                    mask = [1   1   1   1   1   1   0   0
+                            1   1   1   1   0   0   0   0
+                            1   1   0   0   0   0   0   0
+                            1   0   0   0   0   0   0   0
+                            1   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0];
+                elseif  i_coeff == 20
+                    mask = [1   1   1   1   1   1   0   0
+                            1   1   1   1   0   0   0   0
+                            1   1   1   1   0   0   0   0
+                            1   1   1   0   0   0   0   0
+                            1   1   0   0   0   0   0   0
+                            1   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0];
+                elseif  i_coeff == 24
+                    mask = [1   1   1   1   1   1   1   1
+                            1   1   1   1   1   1   0   0
+                            1   1   1   1   0   0   0   0
+                            1   1   1   0   0   0   0   0
+                            1   1   0   0   0   0   0   0
+                            1   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0];
+                elseif  i_coeff == 24
+                    mask = [1   1   1   1   1   1   1   1
+                            1   1   1   1   1   1   0   0
+                            1   1   1   1   0   0   0   0
+                            1   1   1   0   0   0   0   0
+                            1   1   0   0   0   0   0   0
+                            1   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0
+                            0   0   0   0   0   0   0   0];
+                end
+            elseif i_blocksize == 4
+                if i_coeff == 1
+                   mask =  [1   0   0   0 
+                            0   0   0   0 
+                            0   0   0   0 
+                            0   0   0   0 ];
+                elseif i_coeff == 4
+                   mask =  [1   1   0   0 
+                            1   0   0   0 
+                            1   0   0   0 
+                            0   0   0   0 ];
+                elseif  i_coeff == 8
+                    mask = [1   1   1   1 
+                            1   1   0   0 
+                            1   0   0   0 
+                            1   0   0   0 ];
+                elseif  i_coeff == 10
+                    mask = [1   1   1   1
+                            1   1   1   0
+                            1   1   0   0
+                            1   0   0   0];
+                elseif  i_coeff == 12
+                    mask = [1   1   1   1
+                            1   1   1   0
+                            1   1   1   0
+                            1   1   0   0];
+                end        
+            end
+
         
         end
     
