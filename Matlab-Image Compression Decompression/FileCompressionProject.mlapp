@@ -46,12 +46,21 @@ classdef FileCompressionProject < matlab.apps.AppBase
         % Button pushed function: SelectFileButton
         function SelectFileButtonPushed(app, event)
             global fname;
-            [filename pathname]=uigetfile({'*.bmp'},'File Selector');
+            UIAxes.Title.string='Input Image';
+            UIAxes2.Title.string='Output Image';
+            [filename pathname]=uigetfile({'*.png'},'File Selector');
             fname=fullfile(pathname,filename);
             imshow(fname,'Parent',app.UIAxes);
+            msgbox ('done1');    
+            app.DecompressFileButton.Enable = true;
             app.CompressFileButton.Enable=true;
             app.LblSelectFile.Text=fname;
+            app.LblSelectFile.Visible=false;
+            app.FilenameLabel.Text=filename;
+            app.FilenameLabel.Visible=false;
+            
         end
+
         
          % Button pushed function: CompressFileButton
         function CompressFileButtonPushed(app, event)
