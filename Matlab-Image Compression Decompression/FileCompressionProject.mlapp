@@ -80,68 +80,6 @@ classdef FileCompressionProject < matlab.apps.AppBase
             T = dctmtx(i_blocksize);
         
         end
-
-         % Button pushed function: CompressFileButton
-        function CompressFileButtonPushed(app, event)
-            app.LblSelectFile.Visible=false;
-            fname=app.LblSelectFile.Text;
-            msgbox('done');
-            
-        %imageinfo;  % calculate the information of Image (eg. size in bytes)
-         %wcompress('c',I,compression,ezw)
-        red = double(I(:,:,1));
-       green = double(I(:,:,2));
-        blue = double(I(:,:,3));
-             [u,s,v] = svds(red);
-        imred = uint8(u * s * transpose(v));
-        im(:,:,1) = imred;
-       im(:,:,2) = imgreen;
-       im(:,:,3) = imblue;
-              
-       figure,
-      % subplot(3,3,1);
-       imshow(I);        % show image in figure form
-       title('Input Image')
-       imageinfo;
-       
-      figure,
-         subplot(3,2,1);
-          imshow(red);
-          title('red component')
-          subplot(3,2,2);
-           imshow(green);
-           title('green component')
-           subplot(3,2,3);
-            imshow(blue);
-            title('blue component')
-       [u,s,v] = svds(green);
-        imgreen = uint8(u * s * transpose(v));
-        
-        [u,s,v] = svds(blue);
-       imblue = uint8(u * s * transpose(v));
-       
-          
-            subplot(3,2,4);
-             imshow(imred);
-             title('red svd')
-             subplot(3,2,5);
-              imshow(imgreen);
-              title('green svd')
-              subplot(3,2,6);
-               imshow(imblue);
-               title('blue svd')
-               
-       figure,        
-      %subplot(3,3,8)
-      imshow(im);
-     title('output Image')
-     imageinfo;
-     imsave
-
-            
-            
-        end
-    end
     
     % App initialization and construction
     methods (Access = private)
