@@ -191,7 +191,37 @@ classdef FileCompressionProject < matlab.apps.AppBase
                             1   1   0   0];
                 end        
             end
+            
+            if (size(im,3)>1)    
+        
+                % get individual planes [5]
+                R_im = im2double(im(:,:,1));
+                G_im = im2double(im(:,:,2));
+                B_im = im2double(im(:,:,3));
+        
+                % matrix of 8X8 [5]
+                dct = @(block_struct) T * block_struct.data * T';
+        
+                % divide image in 8x* block and applying DCT
+                R = blockproc(R_im,[i_blocksize i_blocksize],dct);
+                B = blockproc(B_im,[i_blocksize i_blocksize],dct);
+                G = blockproc(G_im,[i_blocksize i_blocksize],dct);
+                
+                % Applying mask[5]
+                R_mask = blockproc(R,[i_blocksize i_blocksize],@(block_struct) mask .* block_struct.data );
+                G_mask = blockproc(G,[i_blocksize i_blocksize],@(block_struct) mask .* block_struct.data );
+                B_mask = blockproc(B,[i_blocksize i_blocksize],@(block_struct) mask .* block_struct.data );
+                
+                % inverse DCT[5]
+                funinvdct = @(block_struct) T' * block_struct.data * T;
+                R_image = blockproc(R_mask,[i_blocksize i_blocksize],funinvdct);
+                B_image = blockproc(G_mask,[i_blocksize i_blocksize],funinvdct);
+                G_image = blockproc(B_mask,[i_blocksize i_blocksize],funinvdct);
+                
+                % cat
+                comp_image(:,:,:)=cat(3,R_image, B_image, G_image);
 
+           end
         
         end
     
