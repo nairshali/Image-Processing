@@ -257,6 +257,43 @@ classdef FileCompressionProject < matlab.apps.AppBase
             app.UnCompressedSizeEditField.Value=string(outSize);
 
         end
+         % Menu selected function: CompressionMenu_2
+        function CompressionMenu_2Selected(app, event)
+            app.OriginalSizeEditField.Enable=true;
+            app.OriginalSizeEditField.Visible=true;
+            app.CompressionRatioEditField.Enable=true;
+            app.CompressionRatioEditField.visible=true;
+            app.UnCompressedSizeEditField.Enable=false;
+            app.UnCompressedSizeEditField.Visible=true;
+        end
+        % Menu selected function: DecompressionMenu
+        function DecompressionMenuSelected(app, event)
+            app.OriginalSizeEditField.Enable=false;
+            app.CompressionRatioEditField.Enable=false;
+            app.CompressFileButton.Enable = false;
+            app.SelectFileButton.Enable=true;
+        end
+        % Button pushed function: ClearAllButton
+        function ClearAllButtonPushed(app, event)
+            app.UIAxes.cla;
+            app.UIAxes.reset;
+            app.UIAxes2.cla;
+            app.UIAxes2.reset;
+            app.CompressionRatioEditField.Value="";
+            app.OriginalSizeEditField.Value="";
+            app.CompressionSizeEditField.Value="";
+            app.LblSelectFile.Text="";
+                    
+        end
+        % Menu selected function: DecompressionMenu_2
+        function DecompressionMenu_2Selected(app, event)
+            app.OriginalSizeEditField.Enable=false;
+            app.CompressionRatioEditField.Enable=false;
+            app.UnCompressedSizeEditField.Enable=true;
+            app.UnCompressedSizeEditField.Visible=true;
+        end
+    end
+
     
     % App initialization and construction
     methods (Access = private)
