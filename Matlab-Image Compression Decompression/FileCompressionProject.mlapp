@@ -241,6 +241,20 @@ classdef FileCompressionProject < matlab.apps.AppBase
             app.LblSelectFile.Text = outpath;
             imwrite(comp_image,outpath);
             imshow(comp_image,'Parent',app.UIAxes2);
+            
+            %  input file size   
+            fileinfo = dir(fname);
+            SIZE = fileinfo.bytes;
+            imSize = SIZE/1024;
+            
+            %  output file size 
+            fileinfo = dir(string(outpath));
+            SIZE = fileinfo.bytes;
+            outSize = SIZE/1024;
+              
+            % Compression Ratios
+            app.CompressionSizeEditField.Value = string(imSize);
+            app.UnCompressedSizeEditField.Value=string(outSize);
 
         end
     
