@@ -252,9 +252,13 @@ classdef FileCompressionProject < matlab.apps.AppBase
             SIZE = fileinfo.bytes;
             outSize = SIZE/1024;
               
-            % Compression Ratios
-            app.CompressionSizeEditField.Value = string(imSize);
-            app.UnCompressedSizeEditField.Value=string(outSize);
+            % Compression Ratio & PSNR 
+            [peaksnr, snr] = psnr(double(imread(outpath)), double(im));
+            compressionratio = (outSize/imSize)* 100;
+            compressionratio_per = 100 - ((outSize/imSize)* 100);
+            app.CompressionRatioEditField.Value = string(compressionratio_per);
+            app.CompressionSizeEditField.Value = string(outSize);
+            app.OriginalSizeEditField.Value = string(imSize);
 
         end
          % Menu selected function: CompressionMenu_2
