@@ -261,6 +261,26 @@ classdef FileCompressionProject < matlab.apps.AppBase
             app.OriginalSizeEditField.Value = string(imSize);
 
         end
+        
+        % Button pushed function: DecompressFileButton
+        function DecompressFileButtonPushed(app, event)
+            app.LblSelectFile.Visible=false;
+            app.CompressionRatioEditField.Enable=false;
+            fname=app.LblSelectFile.Text;            
+            filename = app.FilenameLabel.Text;
+            msgbox('done');
+            mat_size=app.MatrixSizeDropDown.Value
+            coeff_val=app.CoefficientValueDropDown.Value
+            i_blocksize = str2double(mat_size);
+            i_coeff = str2double(coeff_val);
+            msgbox('done2');
+            im = imread(fname);
+            outpath = strcat('C:\Users\nirup\Desktop\Shalini Study Reading University\Image processing\2018_ImageCompression\Demo\Decompressed_',string(i_coeff),'_',filename);
+            T = dctmtx(i_blocksize);
+            
+              
+        end
+
          % Menu selected function: CompressionMenu_2
         function CompressionMenu_2Selected(app, event)
             app.OriginalSizeEditField.Enable=true;
