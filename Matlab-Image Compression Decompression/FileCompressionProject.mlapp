@@ -500,87 +500,75 @@ classdef FileCompressionProject < matlab.apps.AppBase
         % Create UIFigure and components
         function createComponents(app)
 
-            % Create ImageCompressionDecompressionUIFigure
+             % Create ImageCompressionDecompressionUIFigure
             app.ImageCompressionDecompressionUIFigure = uifigure;
             app.ImageCompressionDecompressionUIFigure.Position = [100 100 801 540];
             app.ImageCompressionDecompressionUIFigure.Name = 'Image Compression Decompression';
-            
             % Create FileMenu
             app.FileMenu = uimenu(app.ImageCompressionDecompressionUIFigure);
             app.FileMenu.ForegroundColor = [1 0.4118 0.1608];
             app.FileMenu.Text = 'File';
-            
             % Create CompressionMenu
             app.CompressionMenu = uimenu(app.FileMenu);
             app.CompressionMenu.MenuSelectedFcn = createCallbackFcn(app, @CompressionMenuSelected, true);
             app.CompressionMenu.Tooltip = {'Open file for compression'};
             app.CompressionMenu.ForegroundColor = [0.6392 0.0784 0.1804];
             app.CompressionMenu.Text = 'Compression';
-
             % Create DecompressionMenu
             app.DecompressionMenu = uimenu(app.FileMenu);
+            app.DecompressionMenu.MenuSelectedFcn = createCallbackFcn(app, @DecompressionMenuSelected, true);
             app.DecompressionMenu.ForegroundColor = [0.6392 0.0784 0.1804];
             app.DecompressionMenu.Text = 'Decompression';
-            
-             % Create ExitMenu
+            % Create ExitMenu
             app.ExitMenu = uimenu(app.FileMenu);
             app.ExitMenu.ForegroundColor = [0.6392 0.0784 0.1804];
             app.ExitMenu.Text = 'Exit';
-            
             % Create VideoMenu
             app.VideoMenu = uimenu(app.ImageCompressionDecompressionUIFigure);
             app.VideoMenu.ForegroundColor = [1 0.4118 0.1608];
             app.VideoMenu.Text = 'Video';
-            
-             % Create CompressionMenu_2
+            % Create CompressionMenu_2
             app.CompressionMenu_2 = uimenu(app.VideoMenu);
+            app.CompressionMenu_2.MenuSelectedFcn = createCallbackFcn(app, @CompressionMenu_2Selected, true);
             app.CompressionMenu_2.ForegroundColor = [0.6392 0.0784 0.1804];
             app.CompressionMenu_2.Text = 'Compression';
-            
             % Create DecompressionMenu_2
             app.DecompressionMenu_2 = uimenu(app.VideoMenu);
+            app.DecompressionMenu_2.MenuSelectedFcn = createCallbackFcn(app, @DecompressionMenu_2Selected, true);
             app.DecompressionMenu_2.ForegroundColor = [0.6392 0.0784 0.1804];
             app.DecompressionMenu_2.Text = 'Decompression';
-            
             % Create ExitMenu_2
             app.ExitMenu_2 = uimenu(app.VideoMenu);
             app.ExitMenu_2.ForegroundColor = [0.6392 0.0784 0.1804];
             app.ExitMenu_2.Text = 'Exit';
-            
-             % Create SelectFileButton
+            % Create SelectFileButton
             app.SelectFileButton = uibutton(app.ImageCompressionDecompressionUIFigure, 'push');
             app.SelectFileButton.ButtonPushedFcn = createCallbackFcn(app, @SelectFileButtonPushed, true);
             app.SelectFileButton.FontColor = [0.6392 0.0784 0.1804];
             app.SelectFileButton.Enable = 'off';
             app.SelectFileButton.Position = [85 177 100 22];
             app.SelectFileButton.Text = 'Select File';
-            
-             % Create UIAxes
+            % Create UIAxes
             app.UIAxes = uiaxes(app.ImageCompressionDecompressionUIFigure);
             title(app.UIAxes, 'Input Image')
-            xlabel(app.UIAxes, 'X')
-            ylabel(app.UIAxes, 'Y')
             app.UIAxes.PlotBoxAspectRatio = [1 0.677083333333333 0.677083333333333];
             app.UIAxes.Position = [49 207 357 284];
-            
-            % Create CompressionRatioEditFieldLabel
-            app.CompressionRatioEditFieldLabel = uilabel(app.ImageCompressionDecompressionUIFigure);
-            app.CompressionRatioEditFieldLabel.HorizontalAlignment = 'right';
-            app.CompressionRatioEditFieldLabel.Position = [485 108 107 22];
-            app.CompressionRatioEditFieldLabel.Text = 'Compression Ratio';
-            
+            % Create CompressionRatioLabel
+            app.CompressionRatioLabel = uilabel(app.ImageCompressionDecompressionUIFigure);
+            app.CompressionRatioLabel.HorizontalAlignment = 'right';
+            app.CompressionRatioLabel.Position = [468 108 126 22];
+            app.CompressionRatioLabel.Text = 'Compression Ratio(%)';
             % Create CompressionRatioEditField
             app.CompressionRatioEditField = uieditfield(app.ImageCompressionDecompressionUIFigure, 'text');
-            app.CompressionRatioEditField.Position = [607 108 105 22];
-            
-             % Create LblSelectFile
+            app.CompressionRatioEditField.Editable = 'off';
+            app.CompressionRatioEditField.Position = [609 108 98 22];
+            % Create LblSelectFile
             app.LblSelectFile = uilabel(app.ImageCompressionDecompressionUIFigure);
             app.LblSelectFile.FontWeight = 'bold';
             app.LblSelectFile.Enable = 'off';
             app.LblSelectFile.Visible = 'off';
             app.LblSelectFile.Position = [174 519 135 22];
             app.LblSelectFile.Text = 'Select file';
-            
             % Create CompressFileButton
             app.CompressFileButton = uibutton(app.ImageCompressionDecompressionUIFigure, 'push');
             app.CompressFileButton.ButtonPushedFcn = createCallbackFcn(app, @CompressFileButtonPushed, true);
@@ -589,48 +577,78 @@ classdef FileCompressionProject < matlab.apps.AppBase
             app.CompressFileButton.Tooltip = {'Click to compress file'};
             app.CompressFileButton.Position = [211 177 100 22];
             app.CompressFileButton.Text = 'Compress File';
-            
             % Create DecompressFileButton
             app.DecompressFileButton = uibutton(app.ImageCompressionDecompressionUIFigure, 'push');
+            app.DecompressFileButton.ButtonPushedFcn = createCallbackFcn(app, @DecompressFileButtonPushed, true);
             app.DecompressFileButton.FontColor = [0.6392 0.0784 0.1804];
             app.DecompressFileButton.Enable = 'off';
             app.DecompressFileButton.Tooltip = {'Click to decompress file'};
             app.DecompressFileButton.Position = [336 177 106 22];
             app.DecompressFileButton.Text = 'Decompress File';
-            
-             % Create UIAxes2
+            % Create UIAxes2
             app.UIAxes2 = uiaxes(app.ImageCompressionDecompressionUIFigure);
             title(app.UIAxes2, 'Output  Image')
-            xlabel(app.UIAxes2, 'X')
-            ylabel(app.UIAxes2, 'Y')
             app.UIAxes2.PlotBoxAspectRatio = [1 0.691292875989446 0.691292875989446];
             app.UIAxes2.Position = [405 219 351 265];
-            
-             % Create CompressionSizeEditFieldLabel
+            % Create CompressionSizeEditFieldLabel
             app.CompressionSizeEditFieldLabel = uilabel(app.ImageCompressionDecompressionUIFigure);
             app.CompressionSizeEditFieldLabel.HorizontalAlignment = 'right';
             app.CompressionSizeEditFieldLabel.Position = [479 142 103 22];
             app.CompressionSizeEditFieldLabel.Text = 'Compression Size';
-            
-             % Create CompressionSizeEditField
+            % Create CompressionSizeEditField
             app.CompressionSizeEditField = uieditfield(app.ImageCompressionDecompressionUIFigure, 'text');
-            app.CompressionSizeEditField.Position = [597 142 115 22];
-
-            % Create ClearAllButton
-            app.ClearAllButton = uibutton(app.ImageCompressionDecompressionUIFigure, 'state');
-            app.ClearAllButton.Text = {'Clear All'; ''};
-            app.ClearAllButton.FontColor = [0.6392 0.0784 0.1804];
-            app.ClearAllButton.Position = [85 142 100 22];
-            
+            app.CompressionSizeEditField.ValueChangedFcn = createCallbackFcn(app, @CompressFileButtonPushed, true);
+            app.CompressionSizeEditField.Editable = 'off';
+            app.CompressionSizeEditField.Position = [597 142 110 22];
             % Create OriginalSizeEditFieldLabel
             app.OriginalSizeEditFieldLabel = uilabel(app.ImageCompressionDecompressionUIFigure);
             app.OriginalSizeEditFieldLabel.HorizontalAlignment = 'right';
             app.OriginalSizeEditFieldLabel.Position = [479 177 74 22];
             app.OriginalSizeEditFieldLabel.Text = 'Original Size';
-
             % Create OriginalSizeEditField
             app.OriginalSizeEditField = uieditfield(app.ImageCompressionDecompressionUIFigure, 'text');
-            app.OriginalSizeEditField.Position = [568 177 144 22];
+            app.OriginalSizeEditField.Editable = 'off';
+            app.OriginalSizeEditField.Position = [568 177 139 22];
+            % Create ClearAllButton
+            app.ClearAllButton = uibutton(app.ImageCompressionDecompressionUIFigure, 'push');
+            app.ClearAllButton.ButtonPushedFcn = createCallbackFcn(app, @ClearAllButtonPushed, true);
+            app.ClearAllButton.FontColor = [0.6392 0.0784 0.1804];
+            app.ClearAllButton.Position = [85 129 100 22];
+            app.ClearAllButton.Text = 'Clear All';
+            % Create MatrixSizeDropDownLabel
+            app.MatrixSizeDropDownLabel = uilabel(app.ImageCompressionDecompressionUIFigure);
+            app.MatrixSizeDropDownLabel.HorizontalAlignment = 'right';
+            app.MatrixSizeDropDownLabel.Position = [262 142 65 22];
+            app.MatrixSizeDropDownLabel.Text = 'Matrix Size';
+            % Create MatrixSizeDropDown
+            app.MatrixSizeDropDown = uidropdown(app.ImageCompressionDecompressionUIFigure);
+            app.MatrixSizeDropDown.Items = {'4', '8'};
+            app.MatrixSizeDropDown.Position = [342 142 100 22];
+            app.MatrixSizeDropDown.Value = '4';
+            % Create CoefficientValueDropDownLabel
+            app.CoefficientValueDropDownLabel = uilabel(app.ImageCompressionDecompressionUIFigure);
+            app.CoefficientValueDropDownLabel.HorizontalAlignment = 'right';
+            app.CoefficientValueDropDownLabel.Position = [228 108 99 22];
+            app.CoefficientValueDropDownLabel.Text = 'Co-efficient Value';
+            % Create CoefficientValueDropDown
+            app.CoefficientValueDropDown = uidropdown(app.ImageCompressionDecompressionUIFigure);
+            app.CoefficientValueDropDown.Items = {'1', '4', '8', '10', '12'};
+            app.CoefficientValueDropDown.Position = [342 108 100 22];
+            app.CoefficientValueDropDown.Value = '1';
+            % Create FilenameLabel
+            app.FilenameLabel = uilabel(app.ImageCompressionDecompressionUIFigure);
+            app.FilenameLabel.Visible = 'off';
+            app.FilenameLabel.Position = [85 74 55 22];
+            app.FilenameLabel.Text = 'Filename';
+            % Create UnCompressedSizeLabel
+            app.UnCompressedSizeLabel = uilabel(app.ImageCompressionDecompressionUIFigure);
+            app.UnCompressedSizeLabel.HorizontalAlignment = 'right';
+            app.UnCompressedSizeLabel.Position = [477 74 115 22];
+            app.UnCompressedSizeLabel.Text = 'UnCompressed Size';
+            % Create UnCompressedSizeEditField
+            app.UnCompressedSizeEditField = uieditfield(app.ImageCompressionDecompressionUIFigure, 'text');
+            app.UnCompressedSizeEditField.Editable = 'off';
+            app.UnCompressedSizeEditField.Position = [607 74 100 22];
         end
         
     end
