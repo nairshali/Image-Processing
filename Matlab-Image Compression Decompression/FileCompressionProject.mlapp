@@ -433,6 +433,25 @@ classdef FileCompressionProject < matlab.apps.AppBase
                 % divide image in 4x4 block and applying DCT
                 comp_image = blockproc(R_mask,[i_blocksize i_blocksize],funinvdct);
             end
+            
+            % write file
+            outpath = 'C:\Users\nirup\Desktop\Shalini Study Reading University\Imageprocessing\2018_ImageCompression\Demo\Uncompressed.png'
+            imwrite(comp_image,outpath);
+            imshow(comp_image,'Parent',app.UIAxes2);
+            
+            %  input file size   
+            fileinfo = dir(fname);
+            SIZE = fileinfo.bytes;
+            imSize = SIZE/1024;
+            
+            %  output file size 
+            fileinfo = dir(string(outpath));
+            SIZE = fileinfo.bytes;
+            outSize = SIZE/1024;
+              
+            % Compression Ratios
+            app.CompressionSizeEditField.Value = string(imSize);
+            app.UnCompressedSizeEditField.Value=string(outSize);
 
               
         end
