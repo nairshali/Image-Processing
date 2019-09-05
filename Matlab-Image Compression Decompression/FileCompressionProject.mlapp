@@ -503,7 +503,7 @@ classdef FileCompressionProject < matlab.apps.AppBase
             % Create ImageCompressionDecompressionUIFigure
             app.ImageCompressionDecompressionUIFigure = uifigure;
             app.ImageCompressionDecompressionUIFigure.Position = [100 100 801 540];
-            app.ImageCompressionDecompressionUIFigure.Name = 'Image Compression/Decompression';
+            app.ImageCompressionDecompressionUIFigure.Name = 'Image Compression Decompression';
             
             % Create FileMenu
             app.FileMenu = uimenu(app.ImageCompressionDecompressionUIFigure);
